@@ -1,0 +1,363 @@
+.rail {
+  position: fixed;
+  top: 50%;
+  left: clamp(1rem, 2.6vw, 2.5rem);
+  z-index: 6;
+  transform: translateY(-50%);
+}
+
+.rail ol {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0 0 0 1.15rem;
+  list-style: none;
+}
+
+.rail__progress {
+  position: absolute;
+  top: 0.2rem;
+  bottom: 0.2rem;
+  left: 0;
+  width: 1px;
+  background: var(--line);
+}
+
+.rail__progress i {
+  display: block;
+  width: 100%;
+  height: 0%;
+  background: var(--rose);
+  transition: height 0.2s linear;
+}
+
+.rail a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 8.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  transition: color 0.3s var(--ease);
+}
+
+.rail a em {
+  font-style: normal;
+  font-size: 7.5px;
+  letter-spacing: 0.18em;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+}
+
+.rail a:hover,
+.rail a:focus-visible,
+.rail a.is-active {
+  color: var(--ivory);
+}
+
+.rail a:hover em,
+.rail a:focus-visible em,
+.rail a.is-active em {
+  opacity: 0.65;
+  transform: translateX(0);
+}
+
+.rail a.is-active span {
+  color: var(--rose);
+}
+
+.hud {
+  position: fixed;
+  top: clamp(3.4rem, 7vw, 4.7rem);
+  right: clamp(1.25rem, 5vw, 4.5rem);
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+  text-align: right;
+  pointer-events: none;
+}
+
+.hud > * {
+  pointer-events: auto;
+}
+
+.hud__chapter {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  color: var(--muted);
+  font-family: var(--serif);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.hud__chapter span:first-child {
+  color: var(--ivory);
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+.hud__chapter i {
+  font-style: normal;
+  opacity: 0.5;
+}
+
+.hud__clock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
+}
+
+.hud__label {
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 7.5px;
+  letter-spacing: 0.24em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.hud__clock time {
+  color: var(--ivory);
+  font-family: var(--serif);
+  font-size: 17px;
+  letter-spacing: 0.1em;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 7.5px;
+  letter-spacing: 0.2em;
+  line-height: 1;
+  text-transform: uppercase;
+  transition: color 0.3s var(--ease);
+}
+
+.icon-btn:hover,
+.icon-btn:focus-visible {
+  color: var(--ivory);
+  outline: none;
+}
+
+.icon-btn[aria-pressed="true"] {
+  color: var(--ivory);
+}
+
+.icon-btn__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+}
+
+.icon-btn[aria-pressed="true"] .icon-btn__dot {
+  background: var(--rose);
+  border-color: var(--rose);
+}
+
+.hotspots {
+  position: fixed;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.hotspot {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ivory);
+  font-family: var(--sans);
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: auto;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.92);
+  transition: opacity 0.45s var(--ease), transform 0.45s var(--ease);
+  text-shadow: 0 1px 10px rgba(10, 10, 11, 0.8);
+}
+
+.hotspot.is-visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.hotspot__dot {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  border: 1px solid var(--rose);
+  background: var(--ink);
+}
+
+.hotspot__dot::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  background: var(--rose);
+}
+
+.hotspot__line {
+  width: 26px;
+  height: 1px;
+  background: var(--line-strong);
+}
+
+.hotspot__label {
+  padding-top: 1px;
+}
+
+.hotspot:hover .hotspot__dot,
+.hotspot:focus-visible .hotspot__dot {
+  background: var(--rose);
+}
+
+.hotspot:hover .hotspot__line,
+.hotspot:focus-visible .hotspot__line {
+  background: var(--ivory);
+}
+
+.hotspot:focus-visible {
+  outline: 1px solid var(--rose);
+  outline-offset: 5px;
+}
+
+.hotspot.is-flip {
+  flex-direction: row-reverse;
+}
+
+.hotspot[hidden] {
+  display: none;
+}
+
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 40;
+  width: 26px;
+  height: 26px;
+  margin: -13px 0 0 -13px;
+  border: 1px solid rgba(236, 231, 220, 0.55);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(-100px, -100px, 0);
+  transition: opacity 0.25s var(--ease), width 0.3s var(--ease), height 0.3s var(--ease),
+    margin 0.3s var(--ease), background 0.3s var(--ease), border-color 0.3s var(--ease);
+  mix-blend-mode: difference;
+}
+
+.cursor.is-visible {
+  opacity: 1;
+}
+
+.cursor.is-active {
+  width: 58px;
+  height: 58px;
+  margin: -29px 0 0 -29px;
+  background: rgba(236, 231, 220, 0.08);
+  border-color: rgba(236, 231, 220, 0.7);
+}
+
+.cursor__label {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  color: var(--ivory);
+  font-family: var(--sans);
+  font-size: 7px;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.25s var(--ease);
+}
+
+.cursor.is-active .cursor__label {
+  opacity: 1;
+}
+
+html.has-cursor,
+html.has-cursor a,
+html.has-cursor button,
+html.has-cursor label {
+  cursor: none;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .cursor {
+    display: none;
+  }
+}
+
+@media (max-width: 1199px) {
+  .rail a em {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .rail {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .hud {
+    top: 3.1rem;
+    right: 1.25rem;
+    gap: 0.55rem;
+  }
+
+  .hud__clock {
+    display: none;
+  }
+
+  .hud__chapter {
+    font-size: 11px;
+  }
+
+  .hud__chapter span:first-child {
+    font-size: 13px;
+  }
+
+  .hotspot {
+    font-size: 7px;
+    letter-spacing: 0.14em;
+  }
+
+  .hotspot__line {
+    width: 16px;
+  }
+}

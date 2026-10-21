@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0a0a0b" />
+    <meta
+      name="description"
+      content="MERIDIAN 子午 · CALIBRE 01 — 一枚为上弦而生的手动机械腕表。实时 3D 概念网站。"
+    />
+    <meta property="og:title" content="MERIDIAN 子午 — CALIBRE 01" />
+    <meta property="og:description" content="静默的精度。一枚手动上链机械腕表的实时 3D 叙事。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://zero-s003.github.io/meridian/" />
+    <meta property="og:image" content="https://zero-s003.github.io/meridian/poster.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <title>MERIDIAN 子午 — CALIBRE 01</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#hero">跳到正文</a>
+
+    <canvas id="stage" aria-hidden="true"></canvas>
+
+    <div class="fallback" id="fallback" hidden>
+      <img src="./poster.jpg" alt="" decoding="async" />
+      <p>此浏览器无法呈现实时 3D。以下为静态影像，完整叙事仍可阅读。</p>
+    </div>
+
+    <header class="masthead">
+      <a class="masthead__brand" href="#hero" aria-label="MERIDIAN 子午，回到开头">
+        MERIDIAN <span>子午</span>
+      </a>
+      <p class="masthead__meta">GENÈVE · EST. 1962</p>
+    </header>
+
+    <nav class="rail" aria-label="章节导航">
+      <span class="rail__progress" aria-hidden="true"><i id="rail-fill"></i></span>
+      <ol>
+        <li><a href="#hero" data-nav="0"><span>00</span><em>INTRO</em></a></li>
+        <li><a href="#case" data-nav="1"><span>01</span><em>CASE</em></a></li>
+        <li><a href="#dial" data-nav="2"><span>02</span><em>DIAL</em></a></li>
+        <li><a href="#crown" data-nav="3"><span>03</span><em>CROWN</em></a></li>
+        <li><a href="#calibre" data-nav="4"><span>04</span><em>CALIBRE</em></a></li>
+        <li><a href="#yours" data-nav="5"><span>05</span><em>YOURS</em></a></li>
+        <li><a href="#close" data-nav="6"><span>06</span><em>CLOSE</em></a></li>
+      </ol>
+    </nav>
+
+    <aside class="hud" aria-live="off">
+      <div class="hud__chapter" aria-hidden="true"><span id="chapter-num">00</span><i>/</i><span>06</span></div>
+      <div class="hud__clock">
+        <span class="hud__label">LOCAL TIME</span>
+        <time id="hud-time">--:--:--</time>
+      </div>
+      <button class="icon-btn" id="sound-toggle" type="button" aria-pressed="false">
+        <span class="icon-btn__dot" aria-hidden="true"></span>
+        <span id="sound-label">SOUND OFF</span>
+      </button>
+    </aside>
+
+    <div class="hotspots" id="hotspots"></div>
+
+    <div class="intro" id="intro" aria-hidden="true">
+      <p class="intro__brand">MERIDIAN</p>
+      <p class="intro__line"><i></i></p>
+      <p class="intro__meta">子午 · CALIBRE 01</p>
+    </div>
+
+    <main id="main">
+      <section class="chapter chapter--hero" id="hero" data-chapter="0" data-inspect>
+        <div class="chapter__copy">
+          <p class="eyebrow">MAISON MERIDIAN · GENÈVE</p>
+          <h1 class="hero__title"><span class="hero__latin">Meridian</span><span class="hero__cjk">子午</span></h1>
+          <p class="hero__model">CALIBRE 01 · MANUAL WIND</p>
+          <p class="lede">一枚为上弦而生的手动机械腕表。没有自动陀，只有你、发条，与时间。</p>
+          <p class="hint"><span class="hint__line" aria-hidden="true"></span>拖动旋转 · 向下滚动</p>
+        </div>
+      </section>
+
+      <section class="chapter" id="case" data-chapter="1" data-hotspots="1">
+        <div class="chapter__copy">
+          <p class="eyebrow"><span>01</span> THE CASE</p>
+          <h2>一个可以握住的圆。</h2>
+          <p>
+            39 毫米的 316L 精钢，一体车削成形。侧翼拉丝，倒角抛光；光在两种表面之间换了一种走法。
+          </p>
+          <dl class="spec-inline">
+            <div><dt>MATERIAL</dt><dd>316L STEEL</dd></div>
+            <div><dt>DIAMETER</dt><dd>39 MM</dd></div>
+            <div><dt>FINISH</dt><dd>HAND-CHAMFERED</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="chapter" id="dial" data-chapter="2" data-hotspots="2" data-align="right">
+        <div class="chapter__copy">
+          <p class="eyebrow"><span>02</span> THE DIAL</p>
+          <h2>日辉，从中心开始。</h2>
+          <p>
+            表盘以 720 道细纹旋出日辉。十二枚 18K 玫瑰金刻度悬浮其上，指针按真实的此刻行走。
+          </p>
+          <div class="live-time">
+            <span class="live-time__label">本机时间</span>
+            <time id="dial-time">--:--:--</time>
+          </div>
+          <dl class="spec-inline">
+            <div><dt>DIAL</dt><dd>SUNRAY</dd></div>
+            <div><dt>INDICES</dt><dd>18K ROSE GOLD</dd></div>
+            <div><dt>CRYSTAL</dt><dd>SAPPHIRE</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="chapter" id="crown" data-chapter="3" data-hotspots="3">
+        <div class="chapter__copy">
+          <p class="eyebrow"><span>03</span> THE CROWN</p>
+          <h2>上弦，是一种仪式。</h2>
+          <p>
+            把表冠向下拖动，或轻点上弦。为它上满七十二小时的从容——这是机械腕表与佩戴者之间，唯一必须亲手完成的对话。
+          </p>
+          <div class="reserve" aria-labelledby="reserve-title">
+            <div class="reserve__dial">
+              <svg viewBox="0 0 120 120" aria-hidden="true">
+                <circle class="reserve__track" cx="60" cy="60" r="52" />
+                <circle class="reserve__arc" id="reserve-arc" cx="60" cy="60" r="52" transform="rotate(-90 60 60)" />
+              </svg>
+              <p class="reserve__value"><span id="reserve-value">12</span><small>H</small></p>
+            </div>
+            <div class="reserve__body">
+              <p class="reserve__title" id="reserve-title">POWER RESERVE</p>
+              <p class="reserve__copy">动力储存 · 向下拖动表冠上弦</p>
+              <div class="reserve__actions">
+                <button class="btn" type="button" data-wind="6">上弦 +6H</button>
+                <button class="btn btn--ghost" type="button" data-wind="72">上满</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter" id="calibre" data-chapter="4" data-hotspots="4" data-align="right">
+        <div class="chapter__copy">
+          <p class="eyebrow"><span>04</span> CALIBRE 01</p>
+          <h2>把看不见的，摊开。</h2>
+          <p>
+            高级制表最昂贵的部分，从不朝向世界。背透之下，CALIBRE 01 以 21 枚宝石轴承支撑起 72 小时的稳定心跳。
+          </p>
+          <dl class="spec-inline spec-inline--wide">
+            <div><dt>FREQUENCY</dt><dd>21,600 VPH</dd></div>
+            <div><dt>JEWELS</dt><dd>21</dd></div>
+            <div><dt>RESERVE</dt><dd>72 H</dd></div>
+          </dl>
+          <button class="btn" id="explode-toggle" type="button" aria-pressed="false">展开机芯</button>
+        </div>
+      </section>
+
+      <section class="chapter chapter--config" id="yours" data-chapter="5" data-inspect>
+        <div class="chapter__copy">
+          <p class="eyebrow"><span>05</span> YOURS</p>
+          <h2>由你定义。</h2>
+          <p>三种表盘，两种金属，两条皮带的路径。拖动腕表检视，或花一点时间，选择你的那一种静默。</p>
+
+          <form class="config" id="config">
+            <fieldset>
+              <legend>DIAL / 表盘</legend>
+              <div class="config__row">
+                <label class="swatch">
+                  <input type="radio" name="d" value="ob" checked />
+                  <span class="swatch__dot" style="--sw: #191a1d" aria-hidden="true"></span>
+                  <span>黑曜石</span>
+                </label>
+                <label class="swatch">
+                  <input type="radio" name="d" value="iv" />
+                  <span class="swatch__dot" style="--sw: #d8cfb8" aria-hidden="true"></span>
+                  <span>象牙</span>
+                </label>
+                <label class="swatch">
+                  <input type="radio" name="d" value="ox" />
+                  <span class="swatch__dot" style="--sw: #4a1218" aria-hidden="true"></span>
+                  <span>酒红</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>CASE / 表壳</legend>
+              <div class="config__row">
+                <label class="swatch">
+                  <input type="radio" name="m" value="st" checked />
+                  <span class="swatch__dot" style="--sw: #c9cacb" aria-hidden="true"></span>
+                  <span>精钢</span>
+                </label>
+                <label class="swatch">
+                  <input type="radio" name="m" value="rg" />
+                  <span class="swatch__dot" style="--sw: #b9815f" aria-hidden="true"></span>
+                  <span>18K 玫瑰金</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>STRAP / 表带</legend>
+              <div class="config__row">
+                <label class="swatch">
+                  <input type="radio" name="s" value="bl" checked />
+                  <span class="swatch__dot" style="--sw: #141414" aria-hidden="true"></span>
+                  <span>黑色鳄鱼皮</span>
+                </label>
+                <label class="swatch">
+                  <input type="radio" name="s" value="br" />
+                  <span class="swatch__dot" style="--sw: #5b3a26" aria-hidden="true"></span>
+                  <span>棕色小牛皮</span>
+                </label>
+              </div>
+            </fieldset>
+          </form>
+
+          <p class="config__price"><span>REFERENCE PRICE</span> ¥ <strong id="price">68,000</strong> 起</p>
+          <p class="config__note">此组合可通过链接分享 · 概念定价，非销售页面</p>
+        </div>
+      </section>
+
+      <section class="chapter chapter--close" id="close" data-chapter="6">
+        <div class="chapter__copy">
+          <p class="eyebrow"><span>06</span> CLOSE</p>
+          <h2>时间不需要被看见，<br />它只需要被上弦。</h2>
+          <p>
+            MERIDIAN 子午是一间虚构的日内瓦制表工坊。CALIBRE 01 是它写给机械时间的一封短信——每个清晨，由你亲手启封。
+          </p>
+          <dl class="spec-table">
+            <div><dt>型号</dt><dd>CALIBRE 01 · MANUAL WIND</dd></div>
+            <div><dt>机芯</dt><dd>手动上链 · 21,600 vph · 21 石</dd></div>
+            <div><dt>表径</dt><dd>39.0 MM · 厚 9.8 MM</dd></div>
+            <div><dt>表壳</dt><dd>316L 精钢 / 18K 玫瑰金</dd></div>
+            <div><dt>表镜</dt><dd>双面蓝宝石 · 防眩光</dd></div>
+            <div><dt>动力储存</dt><dd>72 小时</dd></div>
+            <div><dt>防水</dt><dd>50 米</dd></div>
+          </dl>
+          <footer class="footer">
+            <p>MERIDIAN 子午 · CONCEPT STUDY 2026</p>
+            <p>虚构品牌，仅作设计概念 · 实时 WebGL 呈现</p>
+          </footer>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="hotspot-dialog" id="hotspot-dialog" aria-labelledby="hs-title">
+      <button class="hotspot-dialog__close" id="hs-close" type="button" aria-label="关闭">关闭</button>
+      <p class="eyebrow" id="hs-kicker">DETAIL</p>
+      <h3 id="hs-title"></h3>
+      <p id="hs-body"></p>
+      <p class="hotspot-dialog__en" id="hs-en"></p>
+    </dialog>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
